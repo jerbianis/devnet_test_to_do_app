@@ -84,7 +84,7 @@ class EmployeeTaskController extends Controller
         $task->assigned_to = Auth::user()->id;
 
         $project->tasks()->save($task);
-        return redirect()->route('employee.task.index')->with('status','Task request created successfully');
+        return redirect()->back()->with('status','Task request created successfully');
     }
 
     public function cancelRequest(ProjectTask $task)
