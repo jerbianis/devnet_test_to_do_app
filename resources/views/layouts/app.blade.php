@@ -56,7 +56,14 @@
                                 <a class="nav-link" href="{{ route('task.index') }}" @if(Route::currentRouteName() == 'task.index') style="color: #0d6efd; font-weight: bold;" @endif>Tasks</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('pending-task.index') }}" @if(Route::currentRouteName() == 'pending-task.index') style="color: #0d6efd; font-weight: bold;" @endif>Requests</a>
+                                <a class="nav-link" href="{{ route('pending-task.index') }}" @if(Route::currentRouteName() == 'pending-task.index') style="color: #0d6efd; font-weight: bold;" @endif>
+                                    Requests
+                                    @if($count = \App\Http\Controllers\Task\AdminTaskController::getPendingTaskCount())
+                                        <span style="margin-left: 0.3rem; font-size: 8px;" class="translate-middle badge rounded-pill bg-danger">
+                                        {{$count}}
+                                        </span>
+                                    @endif
+                                </a>
                             </li>
                         @endadmin
                         @employee

@@ -199,4 +199,9 @@ class AdminTaskController extends Controller
         $task->delete();
         return redirect()->back()->with('status', 'Task went to Done list');
     }
+
+    public static function getPendingTaskCount()
+    {
+        return ProjectTask::where('is_valid',0)->count();
+    }
 }
