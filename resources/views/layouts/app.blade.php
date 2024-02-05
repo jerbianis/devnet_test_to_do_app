@@ -135,5 +135,10 @@
             {{ session('status') }}
         </div>
     @endif
+    @if (session('status-error'))
+        <div class="alert alert-danger custom-alert" role="alert">
+            {{ session('status-error') }}
+        </div>
+    @endif
 </body>
 </html>
