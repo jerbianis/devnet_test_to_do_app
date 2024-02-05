@@ -21,14 +21,14 @@ class Project extends Model
 
     public function countToDoTasks()
     {
-        return $this->tasks()->where('status', 'todo')->count();
+        return $this->tasks()->where('status', 'todo')->where('is_valid', 1)->count();
     }
     public function countDoingTasks()
     {
-        return $this->tasks()->where('status', 'doing')->count();
+        return $this->tasks()->where('status', 'doing')->where('is_valid', 1)->count();
     }
     public function countDoneTasks()
     {
-        return $this->tasks()->where('status', 'done')->count();
+        return $this->tasks()->where('status', 'done')->where('is_valid', 1)->count();
     }
 }
