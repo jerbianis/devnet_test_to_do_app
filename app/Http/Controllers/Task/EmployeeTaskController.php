@@ -19,15 +19,18 @@ class EmployeeTaskController extends Controller
             $todo_tasks = ProjectTask::with('project')
                 ->where('assigned_to', Auth::user()->id)
                 ->where('is_valid', 1)
-                ->where('status', 'todo');
+                ->where('status', 'todo')
+                ->orderByRaw("FIELD(priority, 'high', 'medium', 'low')");
             $doing_tasks = ProjectTask::with('project')
                 ->where('assigned_to', Auth::user()->id)
                 ->where('is_valid', 1)
-                ->where('status', 'doing');
+                ->where('status', 'doing')
+                ->orderByRaw("FIELD(priority, 'high', 'medium', 'low')");
             $done_tasks = ProjectTask::with('project')
                 ->where('assigned_to', Auth::user()->id)
                 ->where('is_valid', 1)
-                ->where('status', 'done');
+                ->where('status', 'done')
+                ->orderByRaw("FIELD(priority, 'high', 'medium', 'low')");
 
             if (isset($request->selected_project_id) and isset($request->project)) {
                 $todo_tasks->where('project_id', '=', $request->selected_project_id);
